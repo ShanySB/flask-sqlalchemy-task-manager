@@ -3,7 +3,7 @@ from taskmanager import db
 
 class Category(db.Model):
     # schema for the Category model
-    id = db.column(db.integer, primary_key=True)
+    id = db.column(db.Integer, primary_key=True)
     Category_name = db.Column(db.String(25), unique=True, nullable=False)
     task = db.relationship("Task", backref="category", cascade="all, delete", lazy=True)
 
@@ -14,7 +14,7 @@ class Category(db.Model):
 
 class Task(db.Model):
     # schema for the Category model
-    id = db.column(db.integer, primary_key=True)
+    id = db.Column(db.integer, primary_key=True)
     task_name = db.Column(db.String(50), unique=True, nullable=False)
     task_description = db.Colum(db.Text, nullable=False)
     is_urgent = db.Column(db.Boolean, default=False, nullable=False)
