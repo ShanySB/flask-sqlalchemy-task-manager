@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="lighten-pink-2-text text-darken-4 center-align">Add Category</h3>
+
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('add_category') }}"> 
+      <!-- category_name -->
+      <div class="row">
+        <div class="input-field col s12">
+            <i class="fas fa-folder-open prefix pink lighten-2 text-darken-4"></i>
+          <input id="category_name" name="category_name" minlength="3" maxlength="25" type="text" class="validate" required>
+          <label for="category_name">Category Name</label>
+        </div>
+      </div>
+      <!-- submit button -->
+      <div class="row">
+        <div class="col s12 center-align">
+            <button type="submit" class="btn-large pink lighten-2 darken-4">
+                Add Category <i class="fas fa-plus-square right"></i>
+            </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+ <div class="row">
+    {% for category in categories %}
+    <div class="col s12 m6 l3">
+      <div class="card pink lighten-2 center-align">
+        <div class="card-content white-text">
+          <span class="card-title">{{ category.category_name }}</span>
+        </div>
+        <div class="card-action">
+          <a href="#">Edit</a>
+          <a href="#">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
